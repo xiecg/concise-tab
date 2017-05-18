@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpModule }    from '@angular/http';
-
-console.log('HttpModule', HttpModule);
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +8,12 @@ console.log('HttpModule', HttpModule);
 })
 
 export class AppComponent {
-  title = 'app works!';
+  constructor(private http: Http) {}
+  private title: string;
+  ngOnInit () {
+    this.title = 'app works!';
+    this.http.get('https://unsplash.it/1680/910?random').subscribe(res => {
+      console.log(res)
+    });
+  }
 }
