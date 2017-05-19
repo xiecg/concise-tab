@@ -12,8 +12,8 @@ export class AppComponent {
   private title: string;
   ngOnInit () {
     this.title = 'app works!';
-    this.http.get('https://unsplash.it/1680/910?random').subscribe(res => {
-      console.log(res)
-    });
+    // this.http.get('https://unsplash.it/1680/910?random').subscribe(res => {
+    //   console.log(res)
+    // });
   }
 }
