@@ -19,8 +19,8 @@ import {
         state('active', style({
           transform: 'translateX(-300px)'
         })),
-        transition('inactive => active', animate('200ms ease-in')),
-        transition('active => inactive', animate('200ms ease-out'))
+        transition('inactive => active', animate('200ms ease')),
+        transition('active => inactive', animate('200ms ease'))
       ])
     ]
 })
@@ -58,6 +58,12 @@ export class MenuComponent {
   }
   onOpenMenu (type) {
     this.typeActive = type;
+    this.trigger();
+  }
+  receive () {
+    this.trigger();
+  }
+  trigger () {
     this.state = this.state === 'inactive' ? 'active' : 'inactive';
   }
 }

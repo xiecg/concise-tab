@@ -49,7 +49,7 @@
 
   .menu-item {
     padding: 0 20px;
-    transition: 0.1s;
+    transition: 0.2s;
     cursor: pointer;
     height: 60px;
     display: flex;
@@ -64,7 +64,7 @@
       span {
         transform: translateX(7px);
       }
-      // background-color: #eee;
+      background-color: #eee;
     }
     .icon-bookmark {
       font-size: 22px;
@@ -95,14 +95,17 @@
   border-radius: 4px;
   overflow: hidden;
 }
+
 .menu-content-wrapper {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 300px;
+}
 
-  .header {
+:host /deep/ {
+  .menu-header {
     display: flex;
     justify-content: space-between;
     align-items: center;

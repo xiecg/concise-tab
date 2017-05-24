@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ContentComponent, MenuComponent } from '../components';
+import { ContentComponent, MenuComponent, BookmarkComponent, AppsComponent } from '../components';
 import { RenderBackgroundImageDirective } from '../directive/renderBackgroundImage.directive';
 
 @NgModule({
@@ -19,6 +19,8 @@ import { RenderBackgroundImageDirective } from '../directive/renderBackgroundIma
     AppComponent,
     ContentComponent,
     MenuComponent,
+    BookmarkComponent,
+    AppsComponent,
     RenderBackgroundImageDirective
   ],
   providers: [],

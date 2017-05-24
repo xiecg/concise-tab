@@ -6,18 +6,8 @@
     <div class="menu-entry-wrapper">
       <div *ngFor="let item of menus" (click)="onOpenMenu(item.type)" class="menu-item"><i class="iconfont {{item.icon}}"></i> <span>{{item.name}}</span></div>
     </div>
-    <div [hidden]="typeActive !== 'bookmark'" class="menu-content-wrapper">
-      <div class="header">
-        <div class="return">
-          <i class="iconfont icon-return"></i>
-          <span>书签</span>
-        </div>
-        <div class="setting">
-          <i class="iconfont icon-set"></i>
-        </div>
-      </div>
-    </div>
-    <div [hidden]="typeActive !== 'apps'" class="menu-content-wrapper">应用程序</div>
+    <bookmark [hidden]="typeActive !== 'bookmark'" (outer)="receive($event)" class="menu-content-wrapper"></bookmark>
+    <apps [hidden]="typeActive !== 'apps'" (outer)="receive($event)" class="menu-content-wrapper"></apps>
     <div [hidden]="typeActive !== 'extend'" class="menu-content-wrapper">扩展程序</div>
     <div [hidden]="typeActive !== 'history'" class="menu-content-wrapper">历史记录</div>
   </div>
