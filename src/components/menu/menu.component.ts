@@ -19,8 +19,8 @@ import {
         state('active', style({
           transform: 'translateX(-300px)'
         })),
-        transition('inactive => active', animate('200ms ease')),
-        transition('active => inactive', animate('200ms ease'))
+        transition('inactive => active', animate('0.2s ease-out')),
+        transition('active => inactive', animate('0.2s ease-in-out'))
       ])
     ]
 })

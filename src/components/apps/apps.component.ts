@@ -1,5 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
+import { ManagementService } from '../../service';
+
 @Component({
   selector: 'apps',
   templateUrl: './apps.component.html',
@@ -8,7 +10,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
 
 export class AppsComponent {
   @Output() private outer = new EventEmitter<string>();
-  constructor() {}
+  constructor(private management: ManagementService) {}
+  ngOnInit () {
+
+  }
   sendToParent () {
     this.outer.emit('message from child');
   }

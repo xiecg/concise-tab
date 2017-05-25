@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ContentComponent, MenuComponent, BookmarkComponent, AppsComponent } from '../components';
 import { RenderBackgroundImageDirective } from '../directive/renderBackgroundImage.directive';
 
+import { ManagementService } from '../service';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,7 +25,9 @@ import { RenderBackgroundImageDirective } from '../directive/renderBackgroundIma
     AppsComponent,
     RenderBackgroundImageDirective
   ],
-  providers: [],
+  providers: [
+    ManagementService
+  ],
   bootstrap: [ AppComponent ]
 })
 
