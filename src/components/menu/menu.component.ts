@@ -7,6 +7,8 @@ import {
   transition
 } from '@angular/animations';
 
+import { ManagementService } from '../../service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -31,7 +33,7 @@ export class MenuComponent {
   private menus: {
     [index: number]: object;
   };
-  constructor() {}
+  constructor(private management: ManagementService) {}
   ngOnInit () {
     this.state = 'inactive';
     this.menus = [{
