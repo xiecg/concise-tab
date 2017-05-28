@@ -105,11 +105,18 @@
 }
 
 :host /deep/ {
+  .menu-content-wrapper>div{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+  }
   .menu-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 0 15px;
+    height: 60px;
     border-bottom: 1px solid rgba(0,0,0,.05);
   }
   .return {
@@ -126,5 +133,21 @@
     cursor: pointer;
     font-size: 22px;
     vertical-align: super;
+  }
+
+  .menu-content-wrapper {
+    .apps-items {
+      flex: 1;
+      overflow-y: auto;
+    }
+    .item {
+      display: flex;
+      padding: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover {
+        background-color: #eee;
+      }
+    }
   }
 }
