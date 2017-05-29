@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ContentComponent, MenuComponent, BookmarkComponent, AppsComponent } from '../components';
 import { RenderBackgroundImageDirective } from '../directive/renderBackgroundImage.directive';
 
+import { MdMenuModule } from '@angular/material';
+
 import { ManagementService } from '../service';
 
 @NgModule({
@@ -15,7 +17,8 @@ import { ManagementService } from '../service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    MdMenuModule
   ],
   declarations: [
     AppComponent,

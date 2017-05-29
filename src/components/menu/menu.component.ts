@@ -29,6 +29,7 @@ import { ManagementService } from '../../service';
 
 export class MenuComponent {
   private state: string;
+  private entryActive: boolean;
   private typeActive: string;
   private menus: {
     [index: number]: object;
@@ -36,6 +37,7 @@ export class MenuComponent {
   constructor(private management: ManagementService) {}
   ngOnInit () {
     this.state = 'inactive';
+    this.entryActive = true;
     this.menus = [{
       icon: 'icon-bookmark',
       name: '书签',
@@ -67,5 +69,6 @@ export class MenuComponent {
   }
   trigger () {
     this.state = this.state === 'inactive' ? 'active' : 'inactive';
+    this.entryActive = this.entryActive ? false : true;
   }
 }
