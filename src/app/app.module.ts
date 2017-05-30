@@ -11,6 +11,7 @@ import { RenderBackgroundImageDirective } from '../directive/renderBackgroundIma
 import { MdMenuModule } from '@angular/material';
 
 import { ManagementService } from '../service';
+import { AppsService } from '../components/apps/apps.service';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { ManagementService } from '../service';
     RenderBackgroundImageDirective
   ],
   providers: [
-    ManagementService
+    ManagementService,
+    AppsService
   ],
   bootstrap: [ AppComponent ]
 })

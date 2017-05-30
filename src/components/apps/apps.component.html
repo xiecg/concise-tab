@@ -9,13 +9,13 @@
     </div>
   </div>
   <div class="apps-items">
-    <div *ngFor="let item of apps" class="item">
-      <span>{{ item.name }}</span>
+    <div *ngFor="let item of apps; let i = index" class="item">
+      <span class="{{ item.enabled ? '' : 'enabled' }}">{{ item.name }}</span>
       <div>
         <i [mdMenuTriggerFor]="menu" class="iconfont icon-more"></i>
         <md-menu class="setting-menu" #menu="mdMenu">
-          <div class="setting-item" (click)="onSetState(item)">禁用</div>
-          <div class="setting-item" (click)="onDelete(item)">删除</div>
+          <div class="setting-item" (click)="onSetState(item.id)">{{ item.enabled ? '禁用' : '启用' }}</div>
+          <div class="setting-item" (click)="onDelete(item.id)">删除</div>
         </md-menu>
       </div>
     </div>

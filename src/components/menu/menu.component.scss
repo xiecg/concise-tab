@@ -122,6 +122,9 @@
       cursor: pointer;
       justify-content: space-between;
       transition: 0.2s;
+      .enabled {
+        color: #ccc;
+      }
       &:hover {
         background-color: #eee;
         i {

@@ -28,16 +28,14 @@ import { ManagementService } from '../../service';
 })
 
 export class MenuComponent {
-  private state: string;
-  private entryActive: boolean;
-  private typeActive: string;
-  private menus: {
+  state: string;
+  typeActive: string;
+  menus: {
     [index: number]: object;
   };
   constructor(private management: ManagementService) {}
   ngOnInit () {
     this.state = 'inactive';
-    this.entryActive = true;
     this.menus = [{
       icon: 'icon-bookmark',
       name: '书签',
@@ -64,11 +62,10 @@ export class MenuComponent {
     this.typeActive = type;
     this.trigger();
   }
-  receive () {
+  receive (event: object) {
     this.trigger();
   }
   trigger () {
     this.state = this.state === 'inactive' ? 'active' : 'inactive';
-    this.entryActive = this.entryActive ? false : true;
   }
 }
