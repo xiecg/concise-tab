@@ -27,7 +27,7 @@ export class ManagementService {
       return apps;
     });
   }
-  getApps (): Promise<[object]> {
+  getApps (): Promise<[AppsInterface]> {
     return this.getManagement('app');
   }
   getExtend (): Promise<[AppsInterface]> {

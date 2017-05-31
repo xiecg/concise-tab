@@ -5,13 +5,14 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ContentComponent, MenuComponent, BookmarkComponent, AppsComponent } from '../components';
+import { ContentComponent, MenuComponent, ReturnComponent, BookmarkComponent, AppsComponent, ExtendsComponent } from '../components';
 import { RenderBackgroundImageDirective } from '../directive/renderBackgroundImage.directive';
 
 import { MdMenuModule } from '@angular/material';
 
 import { ManagementService } from '../service';
 import { AppsService } from '../components/apps/apps.service';
+import { ExtendsService } from '../components/extends/extends.service';
 
 @NgModule({
   imports: [
@@ -25,13 +26,16 @@ import { AppsService } from '../components/apps/apps.service';
     AppComponent,
     ContentComponent,
     MenuComponent,
+    ReturnComponent,
     BookmarkComponent,
     AppsComponent,
+    ExtendsComponent,
     RenderBackgroundImageDirective
   ],
   providers: [
     ManagementService,
-    AppsService
+    AppsService,
+    ExtendsService
   ],
   bootstrap: [ AppComponent ]
 })

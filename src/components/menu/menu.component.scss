@@ -32,6 +32,7 @@
     align-items: center;
 
     span {
+      font-size: 15px;
       padding: 0 10px;
       transition: transform 0.2s ease;
     }
@@ -101,6 +102,7 @@
         vertical-align: middle;
       }
       span {
+        font-size: 16px;
         padding-left: 5px;
       }
     }
@@ -117,6 +119,7 @@
       overflow-y: auto;
     }
     .item {
+      font-size: 15px;
       display: flex;
       padding: 20px;
       cursor: pointer;

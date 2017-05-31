@@ -16,20 +16,27 @@ interface AppsInterface {
 })
 
 export class AppsComponent {
+  appsConfig: {};
   @Output() private outer = new EventEmitter<string>();
   constructor(private management: ManagementService, private appsService: AppsService) {}
   ngOnInit (): void {
-    this.management.getExtend().then(result => {
+    this.management.getApps().then(result => {
       this.appsService.setApps(result);
     });
+    this.appsConfig = {
+      name: '应用程序',
+      sendToParent: this.sendToParent.bind(this)
+    };
   }
   sendToParent (): void {
-    this.outer.emit('message from child');
+    this.outer.emit();
   }
   onSetState (id: string): void {
     this.appsService.setAppState(id);
   }
-  onDelete (item: object): void {}
+  onUnInstall (id: string): void {
+    this.appsService.unInstall(id);
+  }
   get apps () {
     return this.appsService.getApps();
   }

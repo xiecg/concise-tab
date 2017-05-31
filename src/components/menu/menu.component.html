@@ -1,11 +1,14 @@
 <div class="app-menu">
   <div class="menu-wrapper" [@menuState]="state">
     <div class="menu-entry-wrapper {{ state == 'inactive' && 'entry-active' }}">
-      <div *ngFor="let item of menus" (click)="onOpenMenu(item.type)" class="menu-item"><i class="iconfont {{ item.icon }}"></i> <span>{{ item.name }}</span></div>
+      <div *ngFor="let item of menus" (click)="onOpenMenu(item.type)" class="menu-item">
+        <i class="iconfont {{ item.icon }}"></i>
+        <span>{{ item.name }}</span>
+      </div>
     </div>
     <bookmark [hidden]="typeActive !== 'bookmark'" (outer)="receive($event)" class="menu-content-wrapper"></bookmark>
     <apps [hidden]="typeActive !== 'apps'" (outer)="receive($event)" class="menu-content-wrapper"></apps>
-    <div [hidden]="typeActive !== 'extend'" class="menu-content-wrapper">扩展程序</div>
+    <extends [hidden]="typeActive !== 'extend'" (outer)="receive($event)" class="menu-content-wrapper"></extends>
     <div [hidden]="typeActive !== 'history'" class="menu-content-wrapper">历史记录</div>
   </div>
 </div>
