@@ -1,11 +1,15 @@
-<div class="bookmark-wrapper">
-  <div class="menu-header">
-    <div (click)="sendToParent()" class="return">
-      <i class="iconfont icon-return"></i>
-      <span>{{ config.name }}</span>
-    </div>
-    <div class="setting">
-      <i class="iconfont icon-set"></i>
-    </div>
+<div class="return-header">
+  <div (click)="returnBack()" class="return">
+    <i class="iconfont icon-return"></i>
+    <span>{{ config.name }}</span>
+  </div>
+  <div class="setting">
+    <i [mdMenuTriggerFor]="menu" class="iconfont icon-set"></i>
+    <md-menu class="setting-menu" #menu="mdMenu">
+      <div (click)="setIndex()" class="setting-item">
+        <i class="iconfont icon-fixation"></i>
+        <span>{{ setIndexState ? '取消' : '设置' }}</span>
+      </div>
+    </md-menu>
   </div>
 </div>

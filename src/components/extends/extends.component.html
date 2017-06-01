@@ -1,15 +1,7 @@
 <div class="apps-wrapper">
-  <div class="menu-header">
-    <div (click)="sendToParent()" class="return">
-      <i class="iconfont icon-return"></i>
-      <span>扩展程序</span>
-    </div>
-    <div class="setting">
-      <i class="iconfont icon-set"></i>
-    </div>
-  </div>
+  <return-header [config]="extendsConfig"></return-header>
   <div class="apps-items">
-    <div *ngFor="let item of apps; let i = index" class="item">
+    <div *ngFor="let item of extends; let i = index" class="item">
       <span class="{{ item.enabled ? '' : 'enabled' }}">{{ item.name }}</span>
       <div>
         <i [mdMenuTriggerFor]="menu" class="iconfont icon-more"></i>

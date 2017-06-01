@@ -11,14 +11,20 @@ import { ExtendsService } from './extends.service';
 })
 
 export class ExtendsComponent {
+  extendsConfig: {};
   @Output() private outer = new EventEmitter<string>();
   constructor(private management: ManagementService, private extendsService: ExtendsService) {}
   ngOnInit (): void {
     this.management.getExtend().then(result => {
       this.extendsService.setExtends(result);
     });
+    this.extendsConfig = {
+      name: '扩展程序',
+      returnBack: this.returnBack.bind(this),
+      type: 'extends'
+    };
   }
-  sendToParent (): void {
+  returnBack (): void {
     this.outer.emit();
   }
   onSetState (id: string): void {
@@ -27,7 +33,7 @@ export class ExtendsComponent {
   onUnInstall (id: string): void {
     this.extendsService.unInstall(id);
   }
-  get apps () {
+  get extends () {
     return this.extendsService.getExtends();
   }
 }

@@ -33,9 +33,11 @@ export class MenuComponent {
   menus: {
     [index: number]: object;
   };
-  constructor(private management: ManagementService) {}
+  constructor() {}
   ngOnInit () {
-    this.state = 'inactive';
+    const typeActive = localStorage.getItem('typeActive');
+    this.state = typeActive ? 'active' : 'inactive';
+    this.typeActive = typeActive;
     this.menus = [{
       icon: 'icon-bookmark',
       name: '书签',
@@ -47,7 +49,7 @@ export class MenuComponent {
     },{
       icon: 'icon-extend',
       name: '扩展程序',
-      type: 'extend'
+      type: 'extends'
     },{
       icon: 'icon-history',
       name: '历史记录',

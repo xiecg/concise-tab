@@ -25,10 +25,11 @@ export class AppsComponent {
     });
     this.appsConfig = {
       name: '应用程序',
-      sendToParent: this.sendToParent.bind(this)
+      returnBack: this.returnBack.bind(this),
+      type: 'apps'
     };
   }
-  sendToParent (): void {
+  returnBack (): void {
     this.outer.emit();
   }
   onSetState (id: string): void {
