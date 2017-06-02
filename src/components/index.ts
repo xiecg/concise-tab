@@ -5,6 +5,7 @@ import { ReturnComponent } from './return/return.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { AppsComponent } from './apps/apps.component';
 import { ExtendsComponent } from './extends/extends.component';
+import { HistoryComponent } from './history/history.component';
 
 export {
   ContentComponent,
@@ -12,5 +13,6 @@ export {
   ReturnComponent,
   BookmarkComponent,
   AppsComponent,
+  HistoryComponent,
   ExtendsComponent
 };
