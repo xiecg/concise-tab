@@ -1,6 +1,15 @@
 <div class="history-wrapper">
   <return-header [config]="historyConfig"></return-header>
   <div class="history-items">
-    history
+    <div *ngFor="let item of historys; let i = index" class="item">
+      <span>{{ item.title || item.url }}</span>
+      <div>
+        <i [mdMenuTriggerFor]="menu" class="iconfont icon-more"></i>
+        <md-menu class="setting-menu" #menu="mdMenu">
+          <div class="setting-item" (click)="onOpen(item)" >打开</div>
+          <div class="setting-item" (click)="onDelete(item.id)">删除</div>
+        </md-menu>
+      </div>
+    </div>
   </div>
 </div>

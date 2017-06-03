@@ -88,7 +88,7 @@
   }
 
   .menu-content-wrapper {
-    .apps-items {
+    .apps-items, .history-items {
       flex: 1;
       overflow-y: auto;
     }
@@ -99,6 +99,11 @@
       cursor: pointer;
       justify-content: space-between;
       transition: 0.2s;
+      span {
+        white-space: pre;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
       .enabled {
         color: #ccc;
       }

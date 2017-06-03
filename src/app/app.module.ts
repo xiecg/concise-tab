@@ -13,6 +13,7 @@ import { MdMenuModule } from '@angular/material';
 import { ManagementService } from '../service';
 import { AppsService } from '../components/apps/apps.service';
 import { ExtendsService } from '../components/extends/extends.service';
+import { HistoryService } from '../components/history/history.service';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { ExtendsService } from '../components/extends/extends.service';
   providers: [
     ManagementService,
     AppsService,
-    ExtendsService
+    ExtendsService,
+    HistoryService
   ],
   bootstrap: [ AppComponent ]
 })
