@@ -5,14 +5,18 @@ import { ReturnComponent } from './return/return.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { AppsComponent } from './apps/apps.component';
 import { ExtendsComponent } from './extends/extends.component';
-import { HistoryComponent } from './history/history.component';
+import { HistoryComponent, ConfirmDeleteAllDialog } from './history/history.component';
 
-export {
+export default [
   ContentComponent,
   MenuComponent,
   ReturnComponent,
   BookmarkComponent,
   AppsComponent,
-  HistoryComponent,
-  ExtendsComponent
-};
+  ExtendsComponent,
+  HistoryComponent, ConfirmDeleteAllDialog
+];
+
+export {
+  ConfirmDeleteAllDialog
+}

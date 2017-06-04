@@ -17,6 +17,18 @@ export class HistoryService {
       resolve(historys);
     });
   }
+  searchHistory (value: string): Promise<HistoryInterface[]> {
+    return new Promise((resolve, reject) => {
+      chrome.history.search({
+        text: value,
+        startTime: new Date().getTime()-(24 * 365)*3600*1000,
+        endTime: new Date().getTime(),
+        maxResults: 999999
+      }, (result) => {
+        resolve(result);
+      });
+    });
+  }
   setHistorys (historys: HistoryInterface[]): HistoryService {
     this.historys = historys;
     return this;
@@ -30,5 +42,12 @@ export class HistoryService {
   deleteHistory (id: string): HistoryService {
     this.historys = this.historys.filter(item => item.id !== id);
     return this;
+  }
+  deleteAllHistory (): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      chrome.history.deleteAll(() => {
+        resolve(true);
+      });
+    });
   }
 }

@@ -1,4 +1,4 @@
-<div class="app-menu">
+<div class="app-menu" [@menuSize]="size">
   <div class="menu-wrapper" [@menuState]="state">
     <div class="menu-entry-wrapper {{ state == 'inactive' && 'entry-active' }}">
       <div *ngFor="let item of menus" (click)="onOpenMenu(item.type)" class="menu-item">

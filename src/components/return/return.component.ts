@@ -7,23 +7,24 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 
 export class ReturnComponent {
+  menuItmes: {}[];
   @Input() private config: {
     name: string;
     returnBack: Function;
     type: string;
+    menuItmes: {}[];
   };
   setIndexState: boolean;
-  // @Output() private outer = new EventEmitter<string>();
   constructor() {}
   ngOnInit () {
     const typeActive = localStorage.getItem('typeActive');
     this.setIndexState = typeActive === this.config.type;
+    this.menuItmes = this.config.menuItmes;
   }
   returnBack () {
-    // this.outer.emit();
     this.config.returnBack();
   }
-  setIndex (): void {
+  setIndex () {
     if (this.setIndexState) {
       localStorage.removeItem('typeActive');
     } else {

@@ -23,11 +23,24 @@ import { ManagementService } from '../../service';
         })),
         transition('inactive => active', animate('0.2s ease-out')),
         transition('active => inactive', animate('0.2s ease-in-out'))
+      ]),
+      trigger('menuSize', [
+        state('small', style({
+          width: '300px',
+          height: '300px'
+        })),
+        state('big', style({
+          width: '600px',
+          height: '600px'
+        })),
+        transition('small => big', animate('0.2s ease-out')),
+        transition('big => big', animate('0.2s ease-in-out'))
       ])
     ]
 })
 
 export class MenuComponent {
+  size: string;
   state: string;
   typeActive: string;
   menus: {
@@ -61,10 +74,14 @@ export class MenuComponent {
     }];
   }
   onOpenMenu (type) {
+    if (type === 'history') {
+      this.size = 'big';
+    }
     this.typeActive = type;
     this.trigger();
   }
   receive (event: object) {
+    this.size = 'small';
     this.trigger();
   }
   trigger () {
