@@ -1,6 +1,6 @@
 
 import { RenderBackgroundImageDirective } from './renderBackgroundImage.directive';
 
-export default [
+export {
   RenderBackgroundImageDirective
-];
+}

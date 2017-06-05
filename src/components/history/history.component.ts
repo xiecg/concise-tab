@@ -33,8 +33,8 @@ export class HistoryComponent {
   onOpen (item: { url: string; }) {
     location.href = item.url;
   }
-  onDelete (id: string) {
-    this.historyService.deleteHistory(id);
+  onDelete (item: { id: string, url: string; }) {
+    this.historyService.deleteHistory(item.id, item.url);
   }
   onDeleteAll () {
     const dialogRef = this.dialog.open(ConfirmDeleteAllDialog);

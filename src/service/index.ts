@@ -4,13 +4,9 @@ import { AppsService } from '../components/apps/apps.service';
 import { ExtendsService } from '../components/extends/extends.service';
 import { HistoryService } from '../components/history/history.service';
 
-export default [
+export {
   ManagementService,
   AppsService,
   ExtendsService,
   HistoryService
-]
-
-export {
-  ManagementService
 };

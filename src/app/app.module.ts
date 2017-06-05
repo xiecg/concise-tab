@@ -7,9 +7,25 @@ import { MdMenuModule, MdDialogModule, MdButtonModule, MdSnackBarModule } from '
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import services from '../service';
-import components, { ConfirmDeleteAllDialog } from '../components';
-import directives from '../directive';
+
+import {
+  ContentComponent,
+  MenuComponent,
+  ReturnComponent,
+  BookmarkComponent,
+  AppsComponent,
+  ExtendsComponent,
+  HistoryComponent, ConfirmDeleteAllDialog
+} from '../components';
+
+import {
+  ManagementService,
+  AppsService,
+  ExtendsService,
+  HistoryService
+} from '../service';
+
+import { RenderBackgroundImageDirective } from '../directive';
 
 @NgModule({
   imports: [
@@ -21,14 +37,25 @@ import directives from '../directive';
   ],
   declarations: [
     AppComponent,
-    ... components,
-    ... directives
+    /* components */
+    ContentComponent,
+    MenuComponent,
+    ReturnComponent,
+    BookmarkComponent,
+    AppsComponent,
+    ExtendsComponent,
+    HistoryComponent, ConfirmDeleteAllDialog,
+    /* directives */
+    RenderBackgroundImageDirective
   ],
   entryComponents: [
     ConfirmDeleteAllDialog
   ],
   providers: [
-    ... services
+    ManagementService,
+    AppsService,
+    ExtendsService,
+    HistoryService
   ],
   bootstrap: [ AppComponent ]
 })

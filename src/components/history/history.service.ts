@@ -14,7 +14,15 @@ export class HistoryService {
   constructor () {}
   getAll (): Promise<[HistoryInterface]> {
     return new Promise((resolve, reject) => {
-      resolve(historys);
+      // resolve(historys);
+      chrome.history.search({
+        text: '',
+        startTime: new Date().getTime()-(24 * 30)*3600*1000,
+        endTime: new Date().getTime(),
+        maxResults: 999999
+      }, (result) => {
+        resolve(result);
+      });
     });
   }
   searchHistory (value: string): Promise<HistoryInterface[]> {
@@ -39,11 +47,15 @@ export class HistoryService {
   getHistory (id: string) {
     return this.historys.filter(item => item.id).pop();
   }
-  deleteHistory (id: string): HistoryService {
-    this.historys = this.historys.filter(item => item.id !== id);
-    return this;
+  deleteHistory (id: string, url: string): HistoryService {
+    return chrome.history.deleteUrl({
+      url: url
+    }, () => {
+      this.historys = this.historys.filter(item => item.id !== id);
+    });
   }
   deleteAllHistory (): Promise<boolean> {
+    this.historys = [];
     return new Promise((resolve, reject) => {
       chrome.history.deleteAll(() => {
         resolve(true);

@@ -7,7 +7,7 @@ import { AppsComponent } from './apps/apps.component';
 import { ExtendsComponent } from './extends/extends.component';
 import { HistoryComponent, ConfirmDeleteAllDialog } from './history/history.component';
 
-export default [
+export {
   ContentComponent,
   MenuComponent,
   ReturnComponent,
@@ -15,8 +15,4 @@ export default [
   AppsComponent,
   ExtendsComponent,
   HistoryComponent, ConfirmDeleteAllDialog
-];
-
-export {
-  ConfirmDeleteAllDialog
 }

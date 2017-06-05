@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export class ReturnComponent {
   menuItmes: {}[];
-  @Input() private config: {
+  @Input() config: {
     name: string;
     returnBack: Function;
     type: string;
