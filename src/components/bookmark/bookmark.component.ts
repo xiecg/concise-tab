@@ -7,9 +7,17 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class BookmarkComponent {
+  bookmarkConfig: {};
   @Output() private outer = new EventEmitter<string>();
   constructor() {}
-  sendToParent () {
-    this.outer.emit('message from child');
+  ngOnInit () {
+    this.bookmarkConfig = {
+      name: '书签',
+      returnBack: this.returnBack.bind(this),
+      type: 'bookmark'
+    }
+  }
+  returnBack () {
+    this.outer.emit();
   }
 }

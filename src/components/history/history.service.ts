@@ -14,15 +14,15 @@ export class HistoryService {
   constructor () {}
   getAll (): Promise<[HistoryInterface]> {
     return new Promise((resolve, reject) => {
-      // resolve(historys);
-      chrome.history.search({
-        text: '',
-        startTime: new Date().getTime()-(24 * 30)*3600*1000,
-        endTime: new Date().getTime(),
-        maxResults: 999999
-      }, (result) => {
-        resolve(result);
-      });
+      resolve(historys);
+      // chrome.history.search({
+      //   text: '',
+      //   startTime: new Date().getTime()-(24 * 30)*3600*1000,
+      //   endTime: new Date().getTime(),
+      //   maxResults: 999999
+      // }, (result) => {
+      //   resolve(result);
+      // });
     });
   }
   searchHistory (value: string): Promise<HistoryInterface[]> {

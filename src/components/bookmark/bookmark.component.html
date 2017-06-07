@@ -1,11 +1,4 @@
 <div class="bookmark-wrapper">
-  <div class="menu-header">
-    <div (click)="sendToParent()" class="return">
-      <i class="iconfont icon-return"></i>
-      <span>书签</span>
-    </div>
-    <div class="setting">
-      <i class="iconfont icon-set"></i>
-    </div>
-  </div>
+  <return-header [config]="bookmarkConfig"></return-header>
+  <div>bookmark</div>
 </div>
