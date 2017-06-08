@@ -1,0 +1,11 @@
+.bookmark-wrapper {
+  overflow: initial !important;
+}
+.bookmark-children {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  background: red;
+  left: 300px;
+  top: 0;
+}

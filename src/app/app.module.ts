@@ -22,7 +22,8 @@ import {
   ManagementService,
   AppsService,
   ExtendsService,
-  HistoryService
+  HistoryService,
+  BookmarkService
 } from '../service';
 
 import { RenderBackgroundImageDirective } from '../directive';
@@ -55,7 +56,8 @@ import { RenderBackgroundImageDirective } from '../directive';
     ManagementService,
     AppsService,
     ExtendsService,
-    HistoryService
+    HistoryService,
+    BookmarkService
   ],
   bootstrap: [ AppComponent ]
 })

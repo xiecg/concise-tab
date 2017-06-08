@@ -1,4 +1,11 @@
-<div class="bookmark-wrapper">
-  <return-header [config]="bookmarkConfig"></return-header>
-  <div>bookmark</div>
+<div class="bookmark-wrapper" [@bookmarkState]="state">
+    <return-header [config]="bookmarkConfig"></return-header>
+    <div class="bookmark-items">
+      <div *ngFor="let item of bookmarks; let i = index" (click)="onOpenBookMark()" class="item">
+        <span>{{ item.title }}</span>
+      </div>
+    </div>
+  <div class="bookmark-children">
+    children
+  </div>
 </div>
