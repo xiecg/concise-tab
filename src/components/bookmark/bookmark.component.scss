@@ -1,11 +1,28 @@
 .bookmark-wrapper {
   overflow: initial !important;
 }
+
 .bookmark-children {
   position: absolute;
   width: 300px;
   height: 100%;
-  background: red;
   left: 300px;
   top: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+
+  .bookmark-nodata {
+    color: #999;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+:host /deep/ {
+  .bookmark-return-header .setting {
+    display: none;
+  }
 }

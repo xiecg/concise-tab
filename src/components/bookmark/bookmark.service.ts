@@ -6,6 +6,7 @@ import { list } from './list';
 
 @Injectable()
 export class BookmarkService {
+  currentBookMarks: {}[];
   bookmarks: {}[];
   constructor () {}
   formatBookmarks (data): {}[] {
@@ -32,10 +33,35 @@ export class BookmarkService {
       resolve(this.formatBookmarks(list));
     });
   }
+
   setBookMarks (bookmarks) {
     this.bookmarks = bookmarks;
   }
   getBookMarks () {
     return this.bookmarks;
+  }
+
+  setCurrentBookMark (currentBookMarks) {
+    this.currentBookMarks = currentBookMarks;
+  }
+  getCurrentBookMark () {
+    return this.currentBookMarks;
+  }
+  deleteBookMark (id) {
+    return chrome.bookmarks.remove(id, () => {
+      this.currentBookMarks = this.currentBookMarks.filter((item: {
+        id: string;
+      }) => item.id !== id);
+    });
+  }
+  updateBookMarkTitle (id, newTitle) {
+    chrome.bookmarks.update(id, {
+        title: newTitle
+    }, () => {
+        console.log('update end');
+    })
+  }
+  hasBookMark (item) {
+    return item.length == item.filter(item => !!item.children).length;
   }
 }

@@ -12,7 +12,7 @@ import {
   ContentComponent,
   MenuComponent,
   ReturnComponent,
-  BookmarkComponent,
+  BookmarkComponent, ConfirmBookMarkUpdateNameDialog,
   AppsComponent,
   ExtendsComponent,
   HistoryComponent, ConfirmDeleteAllDialog
@@ -42,7 +42,7 @@ import { RenderBackgroundImageDirective } from '../directive';
     ContentComponent,
     MenuComponent,
     ReturnComponent,
-    BookmarkComponent,
+    BookmarkComponent, ConfirmBookMarkUpdateNameDialog,
     AppsComponent,
     ExtendsComponent,
     HistoryComponent, ConfirmDeleteAllDialog,
@@ -50,6 +50,7 @@ import { RenderBackgroundImageDirective } from '../directive';
     RenderBackgroundImageDirective
   ],
   entryComponents: [
+    ConfirmBookMarkUpdateNameDialog,
     ConfirmDeleteAllDialog
   ],
   providers: [

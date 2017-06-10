@@ -1,11 +1,28 @@
 <div class="bookmark-wrapper" [@bookmarkState]="state">
-    <return-header [config]="bookmarkConfig"></return-header>
+  <return-header [config]="bookmarkConfig"></return-header>
+  <div class="bookmark-items">
+    <div *ngFor="let item of bookmarks; let i = index" (click)="onOpenBookMark(item)" class="item">
+      <span>{{ item.title }}</span>
+    </div>
+  </div>
+  <div class="bookmark-children">
+    <return-header class="bookmark-return-header" [config]="bookmarkChildrenConfig"></return-header>
     <div class="bookmark-items">
-      <div *ngFor="let item of bookmarks; let i = index" (click)="onOpenBookMark()" class="item">
-        <span>{{ item.title }}</span>
+      <div *ngFor="let item of currentBookMarks; let i = index" [hidden]="item.children">
+        <div class="item">
+          <span>{{ item.title }}</span>
+          <div>
+            <i [mdMenuTriggerFor]="menu" class="iconfont icon-more"></i>
+            <md-menu class="setting-menu" #menu="mdMenu">
+              <div class="setting-item" (click)="onUpdateTitle(item.id, item.title)">重命名</div>
+              <div class="setting-item" (click)="onDelete(item.id)">删除</div>
+            </md-menu>
+          </div>
+        </div>
+      </div>
+      <div [hidden]="!hasBookMark">
+        <div class="bookmark-nodata">暂无记录</div>
       </div>
     </div>
-  <div class="bookmark-children">
-    children
   </div>
 </div>
