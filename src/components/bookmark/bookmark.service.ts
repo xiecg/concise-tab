@@ -4,9 +4,14 @@ declare const chrome;
 
 import { list } from './list';
 
+interface BookmarkInterface {
+  title: string;
+  id: string;
+}
+
 @Injectable()
 export class BookmarkService {
-  currentBookMarks: {}[];
+  currentBookMarks: BookmarkInterface[];
   bookmarks: {}[];
   constructor () {}
   formatBookmarks (data): {}[] {
@@ -49,17 +54,16 @@ export class BookmarkService {
   }
   deleteBookMark (id) {
     return chrome.bookmarks.remove(id, () => {
-      this.currentBookMarks = this.currentBookMarks.filter((item: {
-        id: string;
-      }) => item.id !== id);
+      this.currentBookMarks = this.currentBookMarks.filter(item => item.id !== id);
     });
   }
   updateBookMarkTitle (id, newTitle) {
     chrome.bookmarks.update(id, {
         title: newTitle
     }, () => {
-        console.log('update end');
-    })
+      const item = this.currentBookMarks.filter(item => item.id == id).pop();
+      item.title = newTitle;
+    });
   }
   hasBookMark (item) {
     return item.length == item.filter(item => !!item.children).length;

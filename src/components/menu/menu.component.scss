@@ -1,15 +1,22 @@
-.app-menu {
+.app-menu-wrapper {
   position: absolute;
   top: 28px;
   left: 28px;
   width: 300px;
   height: 300px;
-  border-radius: 4px;
-  overflow: hidden;
-  background-color: #ffffff;
-  box-shadow: 0 9px 12px -6px rgba(0,0,0,.2), 0 19px 29px 2px rgba(0,0,0,.14), 0 7px 36px 6px rgba(0,0,0,.12);
-  // opacity: 0.6;
-  // background-color: #323232;
+
+  .app-menu {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 9px 12px -6px rgba(0,0,0,.2), 0 19px 29px 2px rgba(0,0,0,.14), 0 7px 36px 6px rgba(0,0,0,.12);
+    transform-origin: left top;
+    // opacity: 0.6;
+    // background-color: #323232;
+  }
+
 }
 
 .menu-wrapper {
@@ -95,14 +102,25 @@
     .item {
       font-size: 15px;
       display: flex;
-      padding: 20px;
       cursor: pointer;
       justify-content: space-between;
       transition: 0.2s;
-      span {
+      >div {
+        flex-basis: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      span , a {
+        flex: 1;
+        padding: 20px;
         white-space: pre;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
       }
       .enabled {
         color: #ccc;

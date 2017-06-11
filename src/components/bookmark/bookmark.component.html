@@ -1,16 +1,18 @@
-<div class="bookmark-wrapper" [@bookmarkState]="state">
+<div class="bookmark-wrapper">
   <return-header [config]="bookmarkConfig"></return-header>
-  <div class="bookmark-items">
-    <div *ngFor="let item of bookmarks; let i = index" (click)="onOpenBookMark(item)" class="item">
-      <span>{{ item.title }}</span>
-    </div>
-  </div>
-  <div class="bookmark-children">
-    <return-header class="bookmark-return-header" [config]="bookmarkChildrenConfig"></return-header>
+  <div class="bookmark-items-wrapper">
     <div class="bookmark-items">
+      <div>
+        <!--<input type="text">-->
+      </div>
+      <div *ngFor="let item of bookmarks; let i = index" (click)="onOpenBookMark(item)" class="item">
+        <span>{{ item.title }}</span>
+      </div>
+    </div>
+    <div class="bookmark-children bookmark-items">
       <div *ngFor="let item of currentBookMarks; let i = index" [hidden]="item.children">
         <div class="item">
-          <span>{{ item.title }}</span>
+          <a href="{{ item.url }}" target="_blank">{{ item.title }}</a>
           <div>
             <i [mdMenuTriggerFor]="menu" class="iconfont icon-more"></i>
             <md-menu class="setting-menu" #menu="mdMenu">
@@ -25,4 +27,5 @@
       </div>
     </div>
   </div>
+
 </div>

@@ -2,27 +2,19 @@
   overflow: initial !important;
 }
 
-.bookmark-children {
-  position: absolute;
-  width: 300px;
-  height: 100%;
-  left: 300px;
-  top: 0;
+.bookmark-items-wrapper {
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  height: 100%;
+  flex-direction: row;
+}
+
+.bookmark-items.bookmark-children {
+  flex: 2;
+  border-left: 1px solid rgba(0,0,0,.05);
 
   .bookmark-nodata {
     color: #999;
     padding: 20px;
     display: flex;
     justify-content: center;
-  }
-}
-
-:host /deep/ {
-  .bookmark-return-header .setting {
-    display: none;
   }
 }

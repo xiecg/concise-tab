@@ -4,8 +4,8 @@
     <span>{{ config.name }}</span>
   </div>
   <div class="setting">
-    <i [mdMenuTriggerFor]="menu" class="iconfont icon-set"></i>
-    <md-menu class="setting-menu" #menu="mdMenu">
+    <i #trigger="mdMenuTrigger" [mdMenuTriggerFor]="menu" class="iconfont icon-set">{{trigger.menuOpen}}</i>
+    <md-menu (onMenuOpen)="receive($event)" (onMenuClose)="receive($event)" class="setting-menu" #menu="mdMenu">
       <div (click)="setIndex()" class="setting-item">
         <!--<i class="iconfont icon-fixation"></i>-->
         <span>{{ setIndexState ? '取消设置' : '设置为入口' }}</span>

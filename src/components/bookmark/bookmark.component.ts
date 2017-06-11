@@ -2,32 +2,13 @@ import { Component, Output, EventEmitter, Inject } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { BookmarkService } from './bookmark.service';
 
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { ConfigService } from '../../service';
 
 @Component({
   selector: 'bookmark',
   templateUrl: './bookmark.component.html',
-  styleUrls: ['./bookmark.component.scss'],
-  animations: [
-    trigger('bookmarkState', [
-      state('inactive', style({
-        transform: 'translateX(0px)'
-      })),
-      state('active', style({
-        transform: 'translateX(-300px)'
-      })),
-      transition('inactive => active', animate('0.2s ease-out')),
-      transition('active => inactive', animate('0.2s ease-in-out'))
-    ])
-  ]
+  styleUrls: ['./bookmark.component.scss']
 })
-
 export class BookmarkComponent {
   state: string;
   bookmarkConfig: {};
@@ -38,37 +19,29 @@ export class BookmarkComponent {
     type: string;
   };
   @Output() private outer = new EventEmitter<string>();
-  constructor(public dialog: MdDialog, private bookmarkService: BookmarkService) {}
+  constructor(public dialog: MdDialog, private bookmarkService: BookmarkService, private configService: ConfigService) {}
   ngOnInit () {
     this.bookmarkConfig = {
       name: '书签',
       returnBack: this.returnBack.bind(this),
       type: 'bookmark'
     }
-    this.bookmarkChildrenConfig = {
-      name: 'test',
-      returnBack: this.returnBackMark.bind(this),
-      type: ''
-    };
     this.bookmarkService.getAll().then(result => {
       this.bookmarkService.setBookMarks(result);
+      this.onOpenBookMark(result[0]);
     });
     this.state = 'inactive';
-  }
-  returnBackMark () {
-    this.trigger();
   }
   onOpenBookMark (item: {
     title: string;
     children: {}[];
   }) {
-    this.bookmarkChildrenConfig.name = item.title;
     this.hasBookMark = this.bookmarkService.hasBookMark(item.children);
     this.bookmarkService.setCurrentBookMark(item.children);
-    this.trigger();
   }
   onUpdateTitle (id, title) {
     const dialogRef = this.dialog.open(ConfirmBookMarkUpdateNameDialog, {
+      width: '300px',
       data: { id, title }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -79,9 +52,6 @@ export class BookmarkComponent {
   }
   onDelete (id) {
     this.bookmarkService.deleteBookMark(id);
-  }
-  trigger () {
-    this.state = this.state === 'inactive' ? 'active' : 'inactive';
   }
   returnBack () {
     this.outer.emit();
@@ -97,19 +67,19 @@ export class BookmarkComponent {
 @Component({
   selector: 'confirm-delete-all-dialog',
   template: `<md-dialog-content>
-              <div><input #search (keyup.enter)="onEnterSearch([data.id, search.value])" class="update-name-input" placeholder="给{{ data.title }}重命名"/></div>
+              <div><input #search (keyup.enter)="onEnterUpdateName([data.id, search.value])" class="update-name-input" [(ngModel)]="data.title"  placeholder="给{{ data.title }}重命名"/></div>
             </md-dialog-content>
-            <md-dialog-actions>
+            <md-dialog-actions class="update-name-actions">
               <button md-button md-dialog-close>取消</button>
               <button md-button [md-dialog-close]="[data.id, search.value]">确认</button>
             </md-dialog-actions>
             `,
-  styles: [' .update-name-input { border: 0; outline: none; padding: 10px 0; } ']
+  styles: [' .update-name-input { width: 100%; border: 0; outline: none; padding: 10px 0; } .update-name-actions { display: flex; justify-content: center; } ']
 })
 export class ConfirmBookMarkUpdateNameDialog {
   placeholder: string;
   constructor(public dialogRef: MdDialogRef<ConfirmBookMarkUpdateNameDialog>, @Inject(MD_DIALOG_DATA) public data: any) {}
-  onEnterSearch (result) {
+  onEnterUpdateName (result) {
     this.dialogRef.close(result);
   }
 }

@@ -19,6 +19,7 @@ import {
 } from '../components';
 
 import {
+  ConfigService,
   ManagementService,
   AppsService,
   ExtendsService,
@@ -54,6 +55,7 @@ import { RenderBackgroundImageDirective } from '../directive';
     ConfirmDeleteAllDialog
   ],
   providers: [
+    ConfigService,
     ManagementService,
     AppsService,
     ExtendsService,
