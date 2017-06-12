@@ -3,7 +3,7 @@
   <div class="bookmark-items-wrapper">
     <div class="bookmark-items">
       <div>
-        <!--<input type="text">-->
+        <input class="bookmark-search" #search (keyup)="onKeyup(search.value)" (keyup.enter)="onEnterSearch(search.value)" placeholder="搜索书签" type="text">
       </div>
       <div *ngFor="let item of bookmarks; let i = index" (click)="onOpenBookMark(item)" class="item">
         <span>{{ item.title }}</span>

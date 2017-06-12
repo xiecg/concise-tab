@@ -54,16 +54,14 @@ import { ConfigService } from '../../service';
 export class MenuComponent {
   state: string;
   typeActive: string;
-  visible: string;
   constructor(private configService: ConfigService) {}
   ngOnInit () {
     const typeActive = localStorage.getItem('typeActive');
     this.state = typeActive ? 'active' : 'inactive';
     this.typeActive = typeActive;
-    this.visible = 'open';
   }
   onVisible (visible: string) {
-    // this.visible = visible;
+    this.configService.setVisible(visible);
   }
   onOpenMenu (type) {
     if (this.configService.bigs.includes(type)) {
@@ -71,6 +69,9 @@ export class MenuComponent {
     }
     this.typeActive = type;
     this.trigger();
+  }
+  onDownloadPhoto () {
+    window.open(this.configService.currentPhoto);
   }
   receive (event: object) {
     this.configService.setSize('small');
@@ -84,5 +85,8 @@ export class MenuComponent {
   }
   get menus () {
     return this.configService.menus;
+  }
+  get visible () {
+    return this.configService.visible;
   }
 }

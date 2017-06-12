@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConfigService } from '../../service';
 
 @Component({
   selector: 'app-content',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
 })
 
 export class ContentComponent {
-  constructor() {}
+  constructor(private configService: ConfigService) {}
+  onTabMenuClose (e) {
+    e.stopPropagation();
+    if (e.target.classList.contains('app-content')) {
+      this.configService.setVisible('close');
+    }
+  }
 }

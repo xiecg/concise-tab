@@ -4,6 +4,12 @@ import { BookmarkService } from './bookmark.service';
 
 import { ConfigService } from '../../service';
 
+interface BookmarkInterface {
+  title: string;
+  id: string;
+  children?: {}[];
+}
+
 @Component({
   selector: 'bookmark',
   templateUrl: './bookmark.component.html',
@@ -56,7 +62,19 @@ export class BookmarkComponent {
   returnBack () {
     this.outer.emit();
   }
-  get bookmarks () {
+  onEnterSearch (value) {
+    if (!value) return;
+    this.bookmarkService.searchBookMarks(value).then(result => {
+      this.bookmarkService.currentBookMarks = result;
+    });
+  }
+  onKeyup (value) {
+    if (value == '') {
+      const item: any = this.bookmarks[0];
+      this.onOpenBookMark(item);
+    }
+  }
+  get bookmarks (): BookmarkInterface[] {
     return this.bookmarkService.getBookMarks();
   }
   get currentBookMarks () {

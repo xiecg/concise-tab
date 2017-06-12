@@ -7,12 +7,13 @@ import { list } from './list';
 interface BookmarkInterface {
   title: string;
   id: string;
+  children?: {}[];
 }
 
 @Injectable()
 export class BookmarkService {
   currentBookMarks: BookmarkInterface[];
-  bookmarks: {}[];
+  bookmarks: BookmarkInterface[];
   constructor () {}
   formatBookmarks (data): {}[] {
     let list = [];
@@ -38,11 +39,17 @@ export class BookmarkService {
       resolve(this.formatBookmarks(list));
     });
   }
-
+  searchBookMarks (value: string): Promise<BookmarkInterface[]> {
+    return new Promise((resolve, reject) => {
+      chrome.bookmarks.search(value, result => {
+        resolve(result);
+      });
+    });
+  }
   setBookMarks (bookmarks) {
     this.bookmarks = bookmarks;
   }
-  getBookMarks () {
+  getBookMarks (): BookmarkInterface[] {
     return this.bookmarks;
   }
 

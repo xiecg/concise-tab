@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Renderer } from '@angular/core';
+import { ConfigService } from '../service';
 
 @Directive({
   selector: "[renderBackgroundImage]"
@@ -6,10 +7,13 @@ import { Directive, ElementRef, Renderer } from '@angular/core';
 
 export class RenderBackgroundImageDirective {
   constructor(
+    private configService: ConfigService,
     private el: ElementRef,
     private renderer: Renderer,
   ) {
-    renderer.setElementStyle(el.nativeElement, 'backgroundImage', `url(${this.getRandomPhotoUrl()})`);
+    const photo = this.getRandomPhotoUrl();
+    this.configService.currentPhoto = photo;
+    renderer.setElementStyle(el.nativeElement, 'backgroundImage', `url(${ photo })`);
     setTimeout(() => {
       this.nextPhoto();
     }, 600);

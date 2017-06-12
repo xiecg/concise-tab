@@ -1,6 +1,5 @@
-import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-
-import { MdMenuTrigger } from '@angular/material';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ConfigService } from '../../service';
 
 @Component({
   selector: 'return-header',
@@ -9,11 +8,7 @@ import { MdMenuTrigger } from '@angular/material';
 })
 
 export class ReturnComponent {
-  _menuOpen: any;
   menuItmes: {}[];
-  @ViewChild(MdMenuTrigger) trigger: MdMenuTrigger;
-  @Output() onMenuOpen = new EventEmitter<void>();
-  @Output() onMenuClose = new EventEmitter<void>();
   @Input() config: {
     name: string;
     returnBack: Function;
@@ -21,14 +16,11 @@ export class ReturnComponent {
     menuItmes: {}[];
   };
   setIndexState: boolean;
-  constructor() {}
+  constructor(private configService: ConfigService) {}
   ngOnInit () {
     const typeActive = localStorage.getItem('typeActive');
     this.setIndexState = typeActive === this.config.type;
     this.menuItmes = this.config.menuItmes;
-    this.onMenuOpen.subscribe(() => {
-      console.log('onMenuOpen');
-    });
   }
   receive (event) {
     console.log('receive', event);

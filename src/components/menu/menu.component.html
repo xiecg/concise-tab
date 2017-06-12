@@ -1,10 +1,15 @@
-<div class="app-menu-wrapper" (mouseover)="onVisible('open')" (mouseleave)="onVisible('close')">
+<div class="app-menu-wrapper" (mouseover)="onVisible('open')">
+  <!--(mouseleave)="onVisible('close')"-->
   <div class="app-menu" [@menuVisible]="visible" [@menuSize]="size">
     <div class="menu-wrapper" [@menuState]="state">
       <div class="menu-entry-wrapper {{ state == 'inactive' && 'entry-active' }}">
         <div *ngFor="let item of menus" (click)="onOpenMenu(item.type)" class="menu-item">
           <i class="iconfont {{ item.icon }}"></i>
           <span>{{ item.name }}</span>
+        </div>
+        <div class="menu-item" (click)="onDownloadPhoto()">
+          <i class="iconfont icon-download"></i>
+          <span>下载</span>
         </div>
       </div>
       <bookmark [hidden]="typeActive !== 'bookmark'" (outer)="receive($event)" class="menu-content-wrapper"></bookmark>
