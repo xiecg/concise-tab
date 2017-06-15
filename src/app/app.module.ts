@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 
 import {
   ContentComponent,
+  SearchComponent,
   MenuComponent,
   ReturnComponent,
   BookmarkComponent, ConfirmBookMarkUpdateNameDialog,
@@ -41,6 +42,7 @@ import { RenderBackgroundImageDirective } from '../directive';
     AppComponent,
     /* components */
     ContentComponent,
+    SearchComponent,
     MenuComponent,
     ReturnComponent,
     BookmarkComponent, ConfirmBookMarkUpdateNameDialog,

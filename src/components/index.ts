@@ -1,5 +1,6 @@
 
 import { ContentComponent } from './content/content.component';
+import { SearchComponent } from './search/search.component';
 import { MenuComponent } from './menu/menu.component';
 import { ReturnComponent } from './return/return.component';
 import { BookmarkComponent, ConfirmBookMarkUpdateNameDialog } from './bookmark/bookmark.component';
@@ -9,6 +10,7 @@ import { HistoryComponent, ConfirmDeleteAllDialog } from './history/history.comp
 
 export {
   ContentComponent,
+  SearchComponent,
   MenuComponent,
   ReturnComponent,
   BookmarkComponent, ConfirmBookMarkUpdateNameDialog,
