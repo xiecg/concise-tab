@@ -11,6 +11,7 @@ export class ConfigService {
   visible: string;
   hasMenuVisible: boolean;
   currentPhoto: string;
+  SearchVisible: string;
   constructor () {
     const typeActive = localStorage.getItem('typeActive');
 
@@ -46,5 +47,8 @@ export class ConfigService {
   }
   setVisible (visible) {
     this.visible = visible;
+  }
+  setSearchVisible (visible) {
+    this.SearchVisible = visible;
   }
 }

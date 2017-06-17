@@ -1,7 +1,7 @@
-<div class="app-search">
+<div class="app-search" [@visible]="visible" (mouseover)="onVisible('open')">
   <div class="search-input-wrapper">
     <div class="icon-wrapper"><i class="iconfont icon-google"></i></div>
-    <input type="text" #search [formControl]="stateCtrl" (keyup.enter)="onEnterSearch(search.value)" [mdAutocomplete]="auto" placeholder="Google 搜索">
+    <input type="text" #searchInput [formControl]="stateCtrl" (keyup.enter)="onEnterSearch(searchInput.value)" [mdAutocomplete]="auto" placeholder="Google 搜索">
   </div>
   <div class="filter-bg"></div>
 </div>

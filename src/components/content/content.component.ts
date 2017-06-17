@@ -10,8 +10,14 @@ import { ConfigService } from '../../service';
 export class ContentComponent {
   constructor(private configService: ConfigService) {}
   onTabMenuClose (e) {
-    if (e.target.classList.contains('app-content')) {
+    const target = e.target;
+    if (target.tagName === 'INPUT') {
       this.configService.setVisible('close');
+      return false;
+    }
+    if (target.classList.contains('app-content')) {
+      this.configService.setVisible('close');
+      this.configService.setSearchVisible('close');
     }
   }
 }
