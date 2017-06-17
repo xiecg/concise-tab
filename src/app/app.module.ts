@@ -1,9 +1,9 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { MdMenuModule, MdDialogModule, MdButtonModule, MdSnackBarModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { MdMenuModule, MdDialogModule, MdButtonModule, MdSnackBarModule, MdAutocompleteModule, MdOptionModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -25,7 +25,8 @@ import {
   AppsService,
   ExtendsService,
   HistoryService,
-  BookmarkService
+  BookmarkService,
+  SearchService
 } from '../service';
 
 import { RenderBackgroundImageDirective } from '../directive';
@@ -33,10 +34,11 @@ import { RenderBackgroundImageDirective } from '../directive';
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule, ReactiveFormsModule,
     BrowserAnimationsModule,
-    FormsModule,
-    HttpModule,
-    MdMenuModule, MdDialogModule, MdButtonModule, MdSnackBarModule
+    HttpModule, JsonpModule,
+    /* material components */
+    MdMenuModule, MdDialogModule, MdButtonModule, MdSnackBarModule, MdAutocompleteModule, MdOptionModule
   ],
   declarations: [
     AppComponent,
@@ -62,7 +64,8 @@ import { RenderBackgroundImageDirective } from '../directive';
     AppsService,
     ExtendsService,
     HistoryService,
-    BookmarkService
+    BookmarkService,
+    SearchService
   ],
   bootstrap: [ AppComponent ]
 })

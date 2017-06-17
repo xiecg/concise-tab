@@ -1,7 +1,14 @@
 <div class="app-search">
   <div class="search-input-wrapper">
     <div class="icon-wrapper"><i class="iconfont icon-google"></i></div>
-    <input type="text" placeholder="Google 搜索">
+    <input type="text" #search [formControl]="stateCtrl" (keyup.enter)="onEnterSearch(search.value)" [mdAutocomplete]="auto" placeholder="Google 搜索">
   </div>
   <div class="filter-bg"></div>
 </div>
+
+<md-autocomplete #auto="mdAutocomplete">
+  <div class="filter-bg autocomplete-filter" [style.height.px]="height"></div>
+  <md-option class="autocomplete-option" (click)="onEnterSearch(state)" *ngFor="let state of antistop" [value]="state">
+    {{ state }}
+  </md-option>
+</md-autocomplete>

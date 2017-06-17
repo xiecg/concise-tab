@@ -4,6 +4,12 @@ import { BookmarkService } from './bookmark.service';
 
 import { ConfigService } from '../../service';
 
+// chrome.tabs.getCurrent(function(n) {
+//     chrome.tabs.update(n.id, {
+//         url: e(t.currentTarget).attr("url")
+//     })
+// })
+
 interface BookmarkInterface {
   title: string;
   id: string;

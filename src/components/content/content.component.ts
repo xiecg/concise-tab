@@ -10,7 +10,6 @@ import { ConfigService } from '../../service';
 export class ContentComponent {
   constructor(private configService: ConfigService) {}
   onTabMenuClose (e) {
-    e.stopPropagation();
     if (e.target.classList.contains('app-content')) {
       this.configService.setVisible('close');
     }
