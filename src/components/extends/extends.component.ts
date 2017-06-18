@@ -21,7 +21,8 @@ export class ExtendsComponent {
     this.extendsConfig = {
       name: '扩展程序',
       returnBack: this.returnBack.bind(this),
-      type: 'extends'
+      type: 'extensions',
+      skipName: '扩展程序'
     };
   }
   returnBack (): void {

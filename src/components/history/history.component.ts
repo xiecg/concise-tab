@@ -16,6 +16,7 @@ export class HistoryComponent {
       name: '历史记录',
       returnBack: this.returnBack.bind(this),
       type: 'history',
+      skipName: '历史记录',
       menuItmes: [{
         name: '删除所有记录',
         fn: this.onDeleteAll.bind(this)

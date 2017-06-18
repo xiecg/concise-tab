@@ -61,7 +61,7 @@ export class MenuComponent {
     this.typeActive = typeActive;
   }
   onVisible (visible: string) {
-    this.configService.setVisible(visible);
+    this.configService.setMenuVisible(visible);
   }
   onOpenMenu (type) {
     if (this.configService.bigs.includes(type)) {
@@ -87,6 +87,6 @@ export class MenuComponent {
     return this.configService.menus;
   }
   get visible () {
-    return this.configService.visible;
+    return this.configService.menuVisible;
   }
 }

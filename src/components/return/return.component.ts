@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ConfigService } from '../../service';
 
+declare const chrome;
+
 @Component({
   selector: 'return-header',
   templateUrl: './return.component.html',
@@ -22,9 +24,6 @@ export class ReturnComponent {
     this.setIndexState = typeActive === this.config.type;
     this.menuItmes = this.config.menuItmes;
   }
-  receive (event) {
-    console.log('receive', event);
-  }
   returnBack () {
     this.config.returnBack();
   }
@@ -35,5 +34,12 @@ export class ReturnComponent {
       localStorage.setItem('typeActive', this.config.type);
     }
     this.setIndexState = !this.setIndexState;
+  }
+  skip () {
+    chrome.tabs.getCurrent(item => {
+      chrome.tabs.update(item.id, {
+        url: `chrome://${ this.config.type }/`
+      })
+    })
   }
 }

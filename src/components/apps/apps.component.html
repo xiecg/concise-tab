@@ -11,5 +11,8 @@
         </md-menu>
       </div>
     </div>
+    <div [hidden]="apps && apps.length">
+      <div class="nodata">暂无应用程序</div>
+    </div>
   </div>
 </div>

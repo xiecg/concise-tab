@@ -26,7 +26,8 @@ export class AppsComponent {
     this.appsConfig = {
       name: '应用程序',
       returnBack: this.returnBack.bind(this),
-      type: 'apps'
+      type: 'apps',
+      skipName: '应用程序',
     };
   }
   returnBack (): void {

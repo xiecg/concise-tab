@@ -28,6 +28,8 @@ export class AppsService {
     chrome.management.setEnabled(id, app.enabled);
   }
   unInstall (id: string): void {
-    chrome.management.uninstall(id);
+    chrome.management.uninstall(id, () => {
+      this.apps = this.apps.filter(item => item.id !== id);
+    });
   }
 }

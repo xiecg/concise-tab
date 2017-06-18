@@ -61,6 +61,6 @@ export class SearchComponent {
     return this.searchService.antistop;
   }
   get visible () {
-    return this.configService.SearchVisible;
+    return this.configService.searchVisible;
   }
 }

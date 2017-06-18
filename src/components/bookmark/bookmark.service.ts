@@ -33,10 +33,10 @@ export class BookmarkService {
   }
   getAll () {
     return new Promise((resolve, reject) => {
-      // chrome.bookmarks.getTree(result => {
-      //   resolve(this.formatBookmarks(result));
-      // });
-      resolve(this.formatBookmarks(list));
+      chrome.bookmarks.getTree(result => {
+        resolve(this.formatBookmarks(result));
+      });
+      // resolve(this.formatBookmarks(list));
     });
   }
   searchBookMarks (value: string): Promise<BookmarkInterface[]> {
@@ -52,7 +52,6 @@ export class BookmarkService {
   getBookMarks (): BookmarkInterface[] {
     return this.bookmarks;
   }
-
   setCurrentBookMark (currentBookMarks) {
     this.currentBookMarks = currentBookMarks;
   }

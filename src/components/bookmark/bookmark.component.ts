@@ -4,12 +4,6 @@ import { BookmarkService } from './bookmark.service';
 
 import { ConfigService } from '../../service';
 
-// chrome.tabs.getCurrent(function(n) {
-//     chrome.tabs.update(n.id, {
-//         url: e(t.currentTarget).attr("url")
-//     })
-// })
-
 interface BookmarkInterface {
   title: string;
   id: string;
@@ -36,7 +30,8 @@ export class BookmarkComponent {
     this.bookmarkConfig = {
       name: '书签',
       returnBack: this.returnBack.bind(this),
-      type: 'bookmark'
+      type: 'bookmarks',
+      skipName: '书签管理器',
     }
     this.bookmarkService.getAll().then(result => {
       this.bookmarkService.setBookMarks(result);

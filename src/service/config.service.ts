@@ -8,21 +8,23 @@ export class ConfigService {
     [index: number]: object;
   };
   bigs: string[];
-  visible: string;
+  menuVisible: string;
+  menuTime: any;
   hasMenuVisible: boolean;
   currentPhoto: string;
-  SearchVisible: string;
+  searchVisible: string;
+  searchTime: any;
   constructor () {
     const typeActive = localStorage.getItem('typeActive');
 
-    this.bigs = ['bookmark', 'history'];
+    this.bigs = ['bookmarks', 'history'];
     this.size = this.bigs.includes(typeActive) ? 'big' : 'small';
-    this.visible = 'close';
+    this.menuVisible = 'close';
 
     this.menus = [{
       icon: 'icon-bookmark',
       name: '书签',
-      type: 'bookmark'
+      type: 'bookmarks'
     },{
       icon: 'icon-apps',
       name: '应用程序',
@@ -30,25 +32,34 @@ export class ConfigService {
     },{
       icon: 'icon-extend',
       name: '扩展程序',
-      type: 'extends'
+      type: 'extensions'
     },{
       icon: 'icon-history',
       name: '历史记录',
       type: 'history'
     }];
-    // {
-    //   icon: 'icon-download',
-    //   name: '下载',
-    //   type: 'download'
-    // }
   }
   setSize (size: string) {
     this.size = size ? size : (this.size === 'small') ? 'big' : 'small';
   }
-  setVisible (visible) {
-    this.visible = visible;
+  setMenuVisible (visible) {
+    this.menuVisible = visible;
+    if (visible === 'open') {
+      this.menuTime = setTimeout(() => {
+        this.setMenuVisible('close');
+      }, 1000 * 60);
+    } else {
+      clearTimeout(this.menuTime);
+    }
   }
   setSearchVisible (visible) {
-    this.SearchVisible = visible;
+    this.searchVisible = visible;
+    if (visible === 'open') {
+      this.searchTime = setTimeout(() => {
+        this.setSearchVisible('close');
+      }, 1000 * 60);
+    } else {
+      clearTimeout(this.searchTime);
+    }
   }
 }

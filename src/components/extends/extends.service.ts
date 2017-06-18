@@ -17,17 +17,19 @@ export class ExtendsService {
   setExtends (apps: ExtendStateInterface[]): void {
     this.extends = apps;
   }
-  getsetExtend (id: string): ExtendStateInterface {
+  getExtend (id: string): ExtendStateInterface {
     return this.extends.filter(item => item.id == id).pop();
   }
   setExtendState (id: string): void {
-    let app: ExtendStateInterface = this.getsetExtend(id);
+    let app: ExtendStateInterface = this.getExtend(id);
     Object.assign(app, {
       enabled: !app.enabled
     });
     chrome.management.setEnabled(id, app.enabled);
   }
   unInstall (id: string): void {
-    chrome.management.uninstall(id);
+    chrome.management.uninstall(id, () => {
+      this.extends = this.extends.filter(item => item.id !== id);
+    });
   }
 }

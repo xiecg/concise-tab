@@ -1,7 +1,7 @@
 <div class="history-wrapper">
   <return-header [config]="historyConfig"></return-header>
   <div class="history-items">
-    <div class="history-search-wrapper">
+    <div [hidden]="!historys || !historys.length" class="history-search-wrapper">
       <input type="text" #search (keyup.enter)="onEnterSearch(search.value)" placeholder="搜索历史记录">
     </div>
     <div *ngFor="let item of historys; let i = index" class="item">
@@ -13,6 +13,9 @@
           <div class="setting-item" (click)="onDelete(item)">删除</div>
         </md-menu>
       </div>
+    </div>
+    <div [hidden]="historys && historys.length">
+      <div class="nodata">暂无历史记录</div>
     </div>
   </div>
 </div>

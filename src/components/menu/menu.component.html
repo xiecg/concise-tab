@@ -12,9 +12,9 @@
           <span>下载</span>
         </div>
       </div>
-      <bookmark [hidden]="typeActive !== 'bookmark'" (outer)="receive($event)" class="menu-content-wrapper"></bookmark>
+      <bookmark [hidden]="typeActive !== 'bookmarks'" (outer)="receive($event)" class="menu-content-wrapper"></bookmark>
       <apps [hidden]="typeActive !== 'apps'" (outer)="receive($event)" class="menu-content-wrapper"></apps>
-      <extends [hidden]="typeActive !== 'extends'" (outer)="receive($event)" class="menu-content-wrapper"></extends>
+      <extends [hidden]="typeActive !== 'extensions'" (outer)="receive($event)" class="menu-content-wrapper"></extends>
       <history [hidden]="typeActive !== 'history'" (outer)="receive($event)" class="menu-content-wrapper"></history>
     </div>
   </div>
