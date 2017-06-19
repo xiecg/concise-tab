@@ -44,6 +44,7 @@ export class ConfigService {
   }
   setMenuVisible (visible) {
     this.menuVisible = visible;
+    /*
     if (visible === 'open') {
       this.menuTime = setTimeout(() => {
         this.setMenuVisible('close');
@@ -51,9 +52,11 @@ export class ConfigService {
     } else {
       clearTimeout(this.menuTime);
     }
+    */
   }
   setSearchVisible (visible) {
     this.searchVisible = visible;
+    /*
     if (visible === 'open') {
       this.searchTime = setTimeout(() => {
         this.setSearchVisible('close');
@@ -61,5 +64,6 @@ export class ConfigService {
     } else {
       clearTimeout(this.searchTime);
     }
+    */
   }
 }

@@ -12,13 +12,21 @@ export class SearchService {
   }
   getSearchAntistops (value: string): Promise<string[]> {
     return new Promise((resolve, reject) => {
-      let options = new RequestOptions({ params: {
-        client: 'chrome',
-        q: value,
-        callback: 'JSONP_CALLBACK',
-      } });
-      this.jsonp.get('https://www.google.com/complete/search', options).subscribe((result: any) => {
-        resolve(result._body[1]);
+      let options = new RequestOptions({
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }),
+        params: {
+          client: 'chrome',
+          q: value,
+          // callsback: 'JSONP_CALLBACK',
+        }
+      });
+      // http://suggestion.baidu.com/su?wd=11&p=3&t=1497784244647&cb=cbackc
+      this.http.get('https://www.google.com/complete/search', options).subscribe((result: any) => {
+        result = JSON.parse(result._body);
+        resolve(result[1]);
       });
     });
   }

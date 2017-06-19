@@ -15,6 +15,7 @@ export class ReturnComponent {
     name: string;
     returnBack: Function;
     type: string;
+    skipName: string;
     menuItmes: {}[];
   };
   setIndexState: boolean;
