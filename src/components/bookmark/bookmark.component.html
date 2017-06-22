@@ -1,0 +1,36 @@
+<div class="bookmark-wrapper">
+  <return-header [config]="bookmarkConfig"></return-header>
+
+  <div [hidden]="!bookmarks || !bookmarks.length" [class]="bookmarks && bookmarks.length ?  'bookmark-items-wrapper' : ''">
+    <div class="bookmark-items">
+      <div>
+        <input class="bookmark-search" #search (keyup)="onKeyup(search.value)" (keyup.enter)="onEnterSearch(search.value)" placeholder="搜索书签" type="text">
+      </div>
+      <div *ngFor="let item of bookmarks; let i = index" (click)="onOpenBookMark(item)" class="item">
+        <span>{{ item.title }}</span>
+      </div>
+    </div>
+    <div class="bookmark-children bookmark-items">
+      <div *ngFor="let item of currentBookMarks; let i = index" [hidden]="item.children">
+        <div class="item">
+          <a href="{{ item.url }}" target="_blank">{{ item.title }}</a>
+          <div>
+            <i [mdMenuTriggerFor]="menu" class="iconfont icon-more"></i>
+            <md-menu class="setting-menu" #menu="mdMenu">
+              <div class="setting-item" (click)="onUpdateTitle(item.id, item.title)">重命名</div>
+              <div class="setting-item" (click)="onDelete(item.id)">删除</div>
+            </md-menu>
+          </div>
+        </div>
+      </div>
+      <div [hidden]="!hasBookMark">
+        <div class="bookmark-nodata">暂无记录</div>
+      </div>
+    </div>
+  </div>
+
+  <div [hidden]="bookmarks && bookmarks.length">
+    <div class="nodata">暂无书签</div>
+  </div>
+
+</div>

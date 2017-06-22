@@ -1,0 +1,28 @@
+.bookmark-wrapper {
+  overflow: initial !important;
+}
+
+.bookmark-search {
+  outline: none;
+  border: none;
+  padding: 20px;
+
+  &::-webkit-input-placeholder { color:#ccc; }
+}
+
+.bookmark-items-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.bookmark-items.bookmark-children {
+  flex: 2;
+  border-left: 1px solid rgba(0,0,0,.05);
+
+  .bookmark-nodata {
+    color: #999;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+}
