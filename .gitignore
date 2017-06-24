@@ -33,7 +33,7 @@ bower_components
 build/Release
 dist/
 .vscode/
-src/**/list.ts
+src/**/data.ts
 
 # Dependency directories
 node_modules/

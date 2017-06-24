@@ -28,10 +28,10 @@ export class BookmarkComponent {
   constructor(public dialog: MdDialog, private bookmarkService: BookmarkService, private configService: ConfigService) {}
   ngOnInit () {
     this.bookmarkConfig = {
-      name: '书签',
+      name: 'Bookmarks',
       returnBack: this.returnBack.bind(this),
       type: 'bookmarks',
-      skipName: '书签管理器',
+      skipName: 'Bookmark manager',
     }
     this.bookmarkService.getAll().then(result => {
       this.bookmarkService.setBookMarks(result);
@@ -86,11 +86,11 @@ export class BookmarkComponent {
 @Component({
   selector: 'confirm-delete-all-dialog',
   template: `<md-dialog-content>
-              <div><input #search (keyup.enter)="onEnterUpdateName([data.id, search.value])" class="update-name-input" [(ngModel)]="data.title"  placeholder="给{{ data.title }}重命名"/></div>
+              <div><input #search (keyup.enter)="onEnterUpdateName([data.id, search.value])" class="update-name-input" [(ngModel)]="data.title"  placeholder="Rename the {{ data.title }}"/></div>
             </md-dialog-content>
             <md-dialog-actions class="update-name-actions">
-              <button md-button md-dialog-close>取消</button>
-              <button md-button [md-dialog-close]="[data.id, search.value]">确认</button>
+              <button md-button md-dialog-close>cancel</button>
+              <button md-button [md-dialog-close]="[data.id, search.value]">ok</button>
             </md-dialog-actions>
             `,
   styles: [' .update-name-input { width: 100%; border: 0; outline: none; padding: 10px 0; } .update-name-actions { display: flex; justify-content: center; } ']

@@ -1,19 +1,23 @@
 import { Directive, ElementRef, Renderer } from '@angular/core';
 import { ConfigService } from '../service';
+import Unsplash, { toJson } from 'unsplash-js';
 
 @Directive({
   selector: "[renderBackgroundImage]"
 })
 
 export class RenderBackgroundImageDirective {
+  unsplash: any;
   constructor(
     private configService: ConfigService,
     private el: ElementRef,
     private renderer: Renderer,
   ) {
+
     const photo = this.getRandomPhotoUrl();
     this.configService.currentPhoto = photo;
     renderer.setElementStyle(el.nativeElement, 'backgroundImage', `url(${ photo })`);
+
     setTimeout(() => {
       this.nextPhoto();
     }, 600);
@@ -21,6 +25,24 @@ export class RenderBackgroundImageDirective {
   private getRandomPhotoUrl (isNew?: boolean): string {
     const url = localStorage.getItem('nextPhoto');
     return isNew || !url ?  `https://unsplash.it/1680/910?random=${ Date.now() }` : url;
+  }
+  private getRandomPhoto (isNew?: boolean): Promise<any> {
+    const url = localStorage.getItem('nextPhoto');
+    const { width, height } = window.screen;
+
+    return new Promise((resolve, reject) => {
+      if (isNew || !url) {
+        this.unsplash.photos.getRandomPhoto({
+          width, height,
+          featured: true,
+        }).then(toJson).then(result => {
+          console.log('result', result.urls);
+          resolve(result.urls.custom || result.urls.full);
+        });
+      } else {
+        resolve(url);
+      }
+    });
   }
   private loadPhoto (url: string): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -61,5 +83,11 @@ export class RenderBackgroundImageDirective {
     this.convertImgToBase64(this.getRandomPhotoUrl(true)).then(result => {
       localStorage.setItem('nextPhoto', result);
     });
+    // this.getRandomPhoto(true).then(photo => {
+    //   this.loadPhoto(photo).then(result => {
+    //     console.log('localStorage', photo);
+    //     localStorage.setItem('nextPhoto', photo);
+    //   });
+    // });
   }
 }

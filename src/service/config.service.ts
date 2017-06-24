@@ -23,19 +23,19 @@ export class ConfigService {
 
     this.menus = [{
       icon: 'icon-bookmark',
-      name: '书签',
+      name: 'bookmark',
       type: 'bookmarks'
     },{
       icon: 'icon-apps',
-      name: '应用程序',
+      name: 'apps',
       type: 'apps'
     },{
       icon: 'icon-extend',
-      name: '扩展程序',
+      name: 'extensions',
       type: 'extensions'
     },{
       icon: 'icon-history',
-      name: '历史记录',
+      name: 'history',
       type: 'history'
     }];
   }

@@ -8,7 +8,7 @@
     <md-menu class="setting-menu" #menu="mdMenu">
       <div (click)="setIndex()" class="setting-item">
         <!--<i class="iconfont icon-fixation"></i>-->
-        <span>{{ setIndexState ? '取消设置' : '设置为入口' }}</span>
+        <span>{{ setIndexState ? 'Cancel the settings' : 'Set as an entry' }}</span>
       </div>
       <div (click)="skip()" class="setting-item">
         <span>{{ config.skipName }}</span>

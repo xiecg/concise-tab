@@ -37,6 +37,7 @@ export class SearchComponent {
   @ViewChild('searchInput') input: ElementRef;
   height: number;
   stateCtrl: FormControl;
+  value: string;
   constructor(private searchService: SearchService, private configService: ConfigService, private renderer: Renderer) {
     this.stateCtrl = new FormControl();
     this.stateCtrl.valueChanges.subscribe(this.onKeyup.bind(this));
@@ -46,9 +47,13 @@ export class SearchComponent {
   }
   onKeyup (value) {
     this.searchService.getSearchAntistops(value).then(result => {
-      this.height = result.length * 48;
-      this.searchService.setAntistop(result);
-    })
+      if (this.value) {
+        this.height = result.length * 48;
+        this.searchService.setAntistop(result);
+      } else {
+        this.searchService.setAntistop([]);
+      }
+    });
   }
   onEnterSearch (value) {
     location.href = `https://www.google.com/search?q=${ value }`;

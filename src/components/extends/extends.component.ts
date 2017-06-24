@@ -19,10 +19,10 @@ export class ExtendsComponent {
       this.extendsService.setExtends(result);
     });
     this.extendsConfig = {
-      name: '扩展程序',
+      name: 'Extensions',
       returnBack: this.returnBack.bind(this),
       type: 'extensions',
-      skipName: '扩展程序'
+      skipName: 'Extensions'
     };
   }
   returnBack (): void {

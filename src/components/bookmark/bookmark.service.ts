@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 declare const chrome;
 
-import { list } from './list';
+// import { data } from './data';
 
 interface BookmarkInterface {
   title: string;
@@ -36,7 +36,7 @@ export class BookmarkService {
       chrome.bookmarks.getTree(result => {
         resolve(this.formatBookmarks(result));
       });
-      // resolve(this.formatBookmarks(list));
+      // resolve(this.formatBookmarks(data));
     });
   }
   searchBookMarks (value: string): Promise<BookmarkInterface[]> {

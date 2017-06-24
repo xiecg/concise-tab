@@ -4,7 +4,7 @@
   <div [hidden]="!bookmarks || !bookmarks.length" [class]="bookmarks && bookmarks.length ?  'bookmark-items-wrapper' : ''">
     <div class="bookmark-items">
       <div>
-        <input class="bookmark-search" #search (keyup)="onKeyup(search.value)" (keyup.enter)="onEnterSearch(search.value)" placeholder="搜索书签" type="text">
+        <input class="bookmark-search" #search (keyup)="onKeyup(search.value)" (keyup.enter)="onEnterSearch(search.value)" placeholder="Search for bookmarks" type="text">
       </div>
       <div *ngFor="let item of bookmarks; let i = index" (click)="onOpenBookMark(item)" class="item">
         <span>{{ item.title }}</span>
@@ -17,20 +17,20 @@
           <div>
             <i [mdMenuTriggerFor]="menu" class="iconfont icon-more"></i>
             <md-menu class="setting-menu" #menu="mdMenu">
-              <div class="setting-item" (click)="onUpdateTitle(item.id, item.title)">重命名</div>
-              <div class="setting-item" (click)="onDelete(item.id)">删除</div>
+              <div class="setting-item" (click)="onUpdateTitle(item.id, item.title)">Rename</div>
+              <div class="setting-item" (click)="onDelete(item.id)">Delete</div>
             </md-menu>
           </div>
         </div>
       </div>
       <div [hidden]="!hasBookMark">
-        <div class="bookmark-nodata">暂无记录</div>
+        <div class="bookmark-nodata">No bookmarks yet</div>
       </div>
     </div>
   </div>
 
   <div [hidden]="bookmarks && bookmarks.length">
-    <div class="nodata">暂无书签</div>
+    <div class="nodata">No bookmarks yet</div>
   </div>
 
 </div>

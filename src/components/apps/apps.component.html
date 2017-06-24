@@ -6,13 +6,13 @@
       <div>
         <i [mdMenuTriggerFor]="menu" class="iconfont icon-more"></i>
         <md-menu class="setting-menu" #menu="mdMenu">
-          <div class="setting-item" (click)="onSetState(item.id)">{{ item.enabled ? '禁用' : '启用' }}</div>
-          <div class="setting-item" (click)="onUnInstall(item.id)">卸载</div>
+          <div class="setting-item" (click)="onSetState(item.id)">{{ item.enabled ? 'Disabled' : 'Enabled' }}</div>
+          <div class="setting-item" (click)="onUnInstall(item.id)">Uninstall</div>
         </md-menu>
       </div>
     </div>
     <div [hidden]="apps && apps.length">
-      <div class="nodata">暂无应用程序</div>
+      <div class="nodata">No app yet</div>
     </div>
   </div>
 </div>

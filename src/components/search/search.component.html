@@ -1,7 +1,7 @@
 <div class="app-search" [@visible]="visible" (mouseover)="onVisible('open')">
   <div class="search-input-wrapper">
     <div class="icon-wrapper"><i class="iconfont icon-google"></i></div>
-    <input type="text" class="search-input" #searchInput [formControl]="stateCtrl" (keyup.enter)="onEnterSearch(searchInput.value)" [mdAutocomplete]="auto" placeholder="Google 搜索">
+    <input type="text" class="search-input" [(ngModel)]="value" #searchInput [formControl]="stateCtrl" (keyup.enter)="onEnterSearch(value)" [mdAutocomplete]="auto" placeholder="Google search">
   </div>
   <div class="filter-bg"></div>
 </div>

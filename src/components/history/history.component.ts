@@ -13,12 +13,12 @@ export class HistoryComponent {
   constructor(public dialog: MdDialog, public snackBar: MdSnackBar, private historyService: HistoryService) {}
   ngOnInit () {
     this.historyConfig = {
-      name: '历史记录',
+      name: 'historys',
       returnBack: this.returnBack.bind(this),
       type: 'history',
-      skipName: '历史记录',
+      skipName: 'historys',
       menuItmes: [{
-        name: '删除所有记录',
+        name: 'Delete all records',
         fn: this.onDeleteAll.bind(this)
       }]
     }
@@ -42,7 +42,7 @@ export class HistoryComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (!result) return;
       this.historyService.deleteAllHistory().then(() => {
-        this.snackBar.open('删除成功', undefined, { duration: 1000 });
+        this.snackBar.open('successfully deleted.', undefined, { duration: 1000 });
       });
     });
   }
@@ -57,11 +57,11 @@ export class HistoryComponent {
 @Component({
   selector: 'confirm-delete-all-dialog',
   template: `<md-dialog-content>
-              <div>确定删除全部历史记录 ?</div>
+              <div>Delete all history ?</div>
             </md-dialog-content>
             <md-dialog-actions>
-              <button md-button md-dialog-close>取消</button>
-              <button md-button [md-dialog-close]="true">确认</button>
+              <button md-button md-dialog-close>cancel</button>
+              <button md-button [md-dialog-close]="true">ok</button>
             </md-dialog-actions>
             `,
 })

@@ -24,10 +24,10 @@ export class AppsComponent {
       this.appsService.setApps(result);
     });
     this.appsConfig = {
-      name: '应用程序',
+      name: 'app',
       returnBack: this.returnBack.bind(this),
       type: 'apps',
-      skipName: '应用程序',
+      skipName: 'apps',
     };
   }
   returnBack (): void {
