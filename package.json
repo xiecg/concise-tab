@@ -2,7 +2,7 @@
   "name": "concise-tab",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "concise tab page.",
+  "description": "A concise chrome new tab.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

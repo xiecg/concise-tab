@@ -7,6 +7,8 @@ import {
   transition
 } from '@angular/animations';
 
+declare const chrome;
+
 import { ConfigService } from '../../service';
 
 @Component({
@@ -71,7 +73,11 @@ export class MenuComponent {
     this.trigger();
   }
   onDownloadPhoto () {
-    window.open(this.configService.currentPhoto);
+    chrome.tabs.getCurrent(item => {
+      chrome.tabs.update(item.id, {
+        url: this.configService.currentPhoto
+      })
+    })
   }
   receive (event: object) {
     this.configService.setSize('small');
