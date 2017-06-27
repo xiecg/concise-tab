@@ -3,9 +3,13 @@
   <img src="http://ocm0knkb1.bkt.clouddn.com/icon.png" width="140px">
 </p>
 
+<p align="center">
+
 [![Version][version-badge]][version-link]
 [![Install][install-badge]][install-link]
 [![Download][download-badge]][download-link]
+
+</p>
 
 # concise-tab
 A concise chrome new tab.
