@@ -16,10 +16,10 @@
 A concise chrome new tab.
 
 ## Screenshot
-![Snapshot](http://ocm0knkb1.bkt.clouddn.com/Snip20170625_1.png)
+<!--![Snapshot](http://ocm0knkb1.bkt.clouddn.com/Snip20170625_1.png)-->
 ![Snapshot](http://ocm0knkb1.bkt.clouddn.com/Snip20170625_5.png)
 ![Snapshot](http://ocm0knkb1.bkt.clouddn.com/Snip20170625_6.png)
-![Snapshot](http://ocm0knkb1.bkt.clouddn.com/Snip20170625_11.png)
+<!--![Snapshot](http://ocm0knkb1.bkt.clouddn.com/Snip20170625_11.png)-->
 
 
 ## License
