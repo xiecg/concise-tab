@@ -21,6 +21,14 @@ A concise chrome new tab.
 ![Snapshot](http://ocm0knkb1.bkt.clouddn.com/Snip20170625_6-compressor.png)
 ![Snapshot](http://ocm0knkb1.bkt.clouddn.com/Snip20170625_7-compressor.png)
 
+## About
+[CHANGELOG](https://github.com/xiecg/concise-tab/blob/master/CHANGELOG.md)
+
+## Thanks
+- <https://github.com/angular/angular>
+- <https://github.com/Microsoft/TypeScript>
+- <http://www.flaticon.com>
+- <http://www.freepik.com>
 
 ## License
 
