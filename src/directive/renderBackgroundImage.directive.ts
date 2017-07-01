@@ -1,6 +1,7 @@
 import { Directive, ElementRef, Renderer } from '@angular/core';
 import { ConfigService } from '../service';
-import Unsplash, { toJson } from 'unsplash-js';
+// import Unsplash, { toJson } from 'unsplash-js';
+import { base64 } from './default';
 
 @Directive({
   selector: "[renderBackgroundImage]"
@@ -23,9 +24,10 @@ export class RenderBackgroundImageDirective {
     }, 600);
   }
   private getRandomPhotoUrl (isNew?: boolean): string {
-    const url = localStorage.getItem('nextPhoto');
+    const url = localStorage.getItem('nextPhoto') || base64;
     return isNew || !url ?  `https://unsplash.it/1680/910?random=${ Date.now() }` : url;
   }
+  /*
   private getRandomPhoto (isNew?: boolean): Promise<any> {
     const url = localStorage.getItem('nextPhoto');
     const { width, height } = window.screen;
@@ -44,6 +46,7 @@ export class RenderBackgroundImageDirective {
       }
     });
   }
+  */
   private loadPhoto (url: string): Promise<any> {
     return new Promise((resolve, reject) => {
       const image = new Image();

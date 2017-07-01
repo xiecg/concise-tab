@@ -9,7 +9,7 @@ import {
 
 declare const chrome;
 
-import { ConfigService } from '../../service';
+import { ConfigService, SearchService } from '../../service';
 
 @Component({
   selector: 'app-menu',
@@ -56,13 +56,16 @@ import { ConfigService } from '../../service';
 export class MenuComponent {
   state: string;
   typeActive: string;
-  constructor(private configService: ConfigService) {}
+  constructor(private configService: ConfigService, private searchService: SearchService) {}
   ngOnInit () {
     const typeActive = localStorage.getItem('typeActive');
     this.state = typeActive ? 'active' : 'inactive';
     this.typeActive = typeActive;
   }
   onVisible (visible: string) {
+    if (visible === 'open') {
+      this.searchService.setAntistop([]);
+    }
     this.configService.setMenuVisible(visible);
   }
   onOpenMenu (type) {
@@ -73,11 +76,9 @@ export class MenuComponent {
     this.trigger();
   }
   onDownloadPhoto () {
-    chrome.tabs.getCurrent(item => {
-      chrome.tabs.update(item.id, {
-        url: this.configService.currentPhoto
-      })
-    })
+    chrome.downloads.download({
+      url: this.configService.currentPhoto,
+    }, () => {});
   }
   receive (event: object) {
     this.configService.setSize('small');

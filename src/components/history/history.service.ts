@@ -31,7 +31,7 @@ export class HistoryService {
         text: value,
         startTime: new Date().getTime() - (24 * 7) * 3600 * 1000,
         endTime: new Date().getTime(),
-        maxResults: 999999
+        maxResults: 50
       }, (result) => {
         resolve(result);
       });

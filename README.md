@@ -29,6 +29,7 @@ A concise chrome new tab.
 - <https://github.com/Microsoft/TypeScript>
 - <http://www.flaticon.com>
 - <http://www.freepik.com>
+- <http://unsplash.it>
 
 ## License
 
