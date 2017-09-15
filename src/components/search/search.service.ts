@@ -20,18 +20,18 @@ export class SearchService {
         params: {
           client: 'chrome',
           q: value,
-          // callback: 'JSONP_CALLBACK',
+          callback: 'JSONP_CALLBACK',
         }
       });
       // http://suggestion.baidu.com/su?wd=11&p=3&t=1497784244647&cb=cbackc
-      this.http.get('https://www.google.com/complete/search', options).subscribe((result: any) => {
+      this.jsonp.get('https://www.google.com/complete/search', options).subscribe((result: any) => {
 
         // jsonp
-        // resolve(result._body[1]);
+        resolve(result._body[1]);
 
         // http
-        result = JSON.parse(result._body);
-        resolve(result[1]);
+        // result = JSON.parse(result._body);
+        // resolve(result[1]);
       });
     });
   }

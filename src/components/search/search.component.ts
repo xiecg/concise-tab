@@ -43,9 +43,7 @@ export class SearchComponent {
     this.stateCtrl = new FormControl();
     this.stateCtrl.valueChanges.subscribe(this.onKeyup.bind(this));
   }
-  ngOnInit () {
-    this.configService.setSearchVisible('close');
-  }
+  ngOnInit () {}
   onKeyup (value) {
     this.configService.setMenuVisible('close');
     if (!value) {
@@ -64,26 +62,7 @@ export class SearchComponent {
   onEnterSearch (value) {
     location.href = `https://www.google.com/search?q=${ value }`;
   }
-  onVisible (visible: string) {
-    clearTimeout(this.time);
-    this.configService.setSearchVisible(visible);
-    if (this.configService.menuVisible === 'close') {
-      this.renderer.invokeElementMethod(this.input.nativeElement, 'focus');
-    }
-  }
-  onHide () {
-    clearTimeout(this.time);
-    this.time = setTimeout(() => {
-      if (!this.value) {
-        this.configService.setSearchVisible('close');
-        this.renderer.invokeElementMethod(this.input.nativeElement, 'blur');
-      }
-    }, 1500);
-  }
   get antistop () {
     return this.searchService.antistop;
-  }
-  get visible () {
-    return this.configService.searchVisible;
   }
 }

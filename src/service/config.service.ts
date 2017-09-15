@@ -12,7 +12,6 @@ export class ConfigService {
   menuTime: any;
   hasMenuVisible: boolean;
   currentPhoto: string;
-  searchVisible: string;
   searchTime: any;
   constructor () {
     const typeActive = localStorage.getItem('typeActive');
@@ -51,18 +50,6 @@ export class ConfigService {
       }, 1000 * 60);
     } else {
       clearTimeout(this.menuTime);
-    }
-    */
-  }
-  setSearchVisible (visible) {
-    this.searchVisible = visible;
-    /*
-    if (visible === 'open') {
-      this.searchTime = setTimeout(() => {
-        this.setSearchVisible('close');
-      }, 1000 * 60);
-    } else {
-      clearTimeout(this.searchTime);
     }
     */
   }
