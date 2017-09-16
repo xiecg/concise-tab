@@ -7,6 +7,7 @@ import { BookmarkComponent, ConfirmBookMarkUpdateNameDialog } from './bookmark/b
 import { AppsComponent } from './apps/apps.component';
 import { ExtendsComponent } from './extends/extends.component';
 import { HistoryComponent, ConfirmDeleteAllDialog } from './history/history.component';
+import { SeeingComponent } from './setting/setting.component';
 
 export {
   ContentComponent,
@@ -16,5 +17,6 @@ export {
   BookmarkComponent, ConfirmBookMarkUpdateNameDialog,
   AppsComponent,
   ExtendsComponent,
-  HistoryComponent, ConfirmDeleteAllDialog
+  HistoryComponent, ConfirmDeleteAllDialog,
+  SeeingComponent
 }

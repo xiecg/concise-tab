@@ -5,33 +5,13 @@ import { SearchService } from './search.service';
 
 import { ConfigService } from '../../service';
 
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
-
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-  animations: [
-    trigger('visible', [
-      state('open', style({
-        opacity: '1',
-      })),
-      state('close', style({
-        opacity: '0',
-      })),
-      transition('open => close', animate('0.2s')),
-      transition('close => open', animate('0.2s'))
-    ])
-  ]
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
   @ViewChild('searchInput') input: ElementRef;

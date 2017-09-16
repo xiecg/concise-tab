@@ -20,7 +20,7 @@ export class RenderBackgroundImageDirective {
     renderer.setElementStyle(el.nativeElement, 'backgroundImage', `url(${ photo })`);
 
     setTimeout(() => {
-      this.nextPhoto();
+      this.configService.isRandomPhoto && this.nextPhoto();
     }, 600);
   }
   private getRandomPhotoUrl (isNew?: boolean): string {

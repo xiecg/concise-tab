@@ -8,6 +8,7 @@ export class ConfigService {
     [index: number]: object;
   };
   bigs: string[];
+  isRandomPhoto: boolean;
   menuVisible: string;
   menuTime: any;
   hasMenuVisible: boolean;
@@ -15,10 +16,12 @@ export class ConfigService {
   searchTime: any;
   constructor () {
     const typeActive = localStorage.getItem('typeActive');
+    const isRandomPhoto = localStorage.getItem('isRandomPhoto');
 
     this.bigs = ['bookmarks', 'history'];
     this.size = this.bigs.includes(typeActive) ? 'big' : 'small';
     this.menuVisible = 'close';
+    this.isRandomPhoto = isRandomPhoto == null;
 
     this.menus = [{
       icon: 'icon-bookmark',
@@ -43,14 +46,8 @@ export class ConfigService {
   }
   setMenuVisible (visible) {
     this.menuVisible = visible;
-    /*
-    if (visible === 'open') {
-      this.menuTime = setTimeout(() => {
-        this.setMenuVisible('close');
-      }, 1000 * 60);
-    } else {
-      clearTimeout(this.menuTime);
-    }
-    */
+  }
+  setRandomPhoto (bool) {
+    this.isRandomPhoto = bool;
   }
 }

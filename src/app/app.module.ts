@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { MdMenuModule, MdDialogModule, MdButtonModule, MdSnackBarModule, MdAutocompleteModule, MdOptionModule } from '@angular/material';
+import { MdMenuModule, MdDialogModule, MdButtonModule, MdSnackBarModule, MdAutocompleteModule, MdOptionModule, MdTooltipModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -16,7 +16,8 @@ import {
   BookmarkComponent, ConfirmBookMarkUpdateNameDialog,
   AppsComponent,
   ExtendsComponent,
-  HistoryComponent, ConfirmDeleteAllDialog
+  HistoryComponent, ConfirmDeleteAllDialog,
+  SeeingComponent
 } from '../components';
 
 import {
@@ -38,7 +39,7 @@ import { RenderBackgroundImageDirective } from '../directive';
     BrowserAnimationsModule,
     HttpModule, JsonpModule,
     /* material components */
-    MdMenuModule, MdDialogModule, MdButtonModule, MdSnackBarModule, MdAutocompleteModule, MdOptionModule
+    MdMenuModule, MdDialogModule, MdButtonModule, MdSnackBarModule, MdAutocompleteModule, MdOptionModule, MdTooltipModule
   ],
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { RenderBackgroundImageDirective } from '../directive';
     AppsComponent,
     ExtendsComponent,
     HistoryComponent, ConfirmDeleteAllDialog,
+    SeeingComponent,
     /* directives */
     RenderBackgroundImageDirective
   ],

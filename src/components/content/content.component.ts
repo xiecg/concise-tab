@@ -17,7 +17,6 @@ export class ContentComponent {
     }
     if (target.classList.contains('app-content')) {
       this.configService.setMenuVisible('close');
-      this.configService.setSearchVisible('close');
     }
   }
 }
