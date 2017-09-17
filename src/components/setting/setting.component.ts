@@ -21,7 +21,7 @@ export class SeeingComponent {
     }
   }
   get tooltipText () {
-    return this.configService.isRandomPhoto ? 'Close random photos.' : 'Open random photos.';
+    return this.configService.isRandomPhoto ? 'Close random photos' : 'Open random photos';
   }
   get isRandomPhoto () {
     return this.configService.isRandomPhoto;
